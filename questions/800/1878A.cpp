@@ -2,28 +2,39 @@
 #include <vector>
 using namespace std;
 
-int main()
+int main() 
 {
     int tc;
     cin >> tc;
 
-    while (tc--)
+    while (tc--) 
     {
-        int n;
-        cin >> n;
-        vector<int> res(n - 1, 0);
+        int n, k;
+        cin >> n >> k;
 
-        for (int i = 0; i < n - 1; i++)
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) 
         {
-            cin >> res[i];
+            cin >> a[i];
         }
 
-        int sum = 0;
-        for (int i = 0; i < n - 1; i++)
+        // we have to find if k is the most frequent element
+        // in a subarray
+        // implying the subarray can be of any size
+        // so we can choose a subarray with only k
+
+        // So essentially we have to print yes if k exists in array
+        // if it doesnt print no
+
+        bool has_k = false;
+        for (int i = 0; i < n; i++) 
         {
-            sum += res[i];
+            if (a[i] == k)
+                has_k = true;
         }
-        cout << 0 - sum << '\n';
+
+        if (has_k) cout << "YES\n";
+        else cout << "NO\n";
     }
 
     return 0;
